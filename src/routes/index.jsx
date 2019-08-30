@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom'
 import { Layout } from 'antd'
 import SiderBar from '../components/siderBar'
 import HeaderBar from '../components/headerBar'
+import Pie from '../pages/chart/pie'
 
 // const { Header, Sider, Content } = Layout;
 
@@ -23,6 +24,7 @@ class Main extends Component {
               <Switch>
                 <Route exact path='/' component={ Home } />
                 <Route exact path='/root' component={ Root } />
+                <Route exact path='/chart/pie' component={ Pie } />
               </Switch>
             </Suspense>
           </div>

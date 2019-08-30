@@ -1,0 +1,25 @@
+.home_box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 3;
+}
+
+
+.div_common {
+  width: 200px;
+  height: 120px;
+  border: 1px solid #ccc;
+  transition: 1.5s;
+  border-radius: 5px;
+  border-top-left-radius: 80px;
+}
+.div_show {
+  composes: div_common;
+  opacity: 1;
+  background: #f66;
+}
+.div_hide {
+  composes: div_common;
+  opacity: 0;
+}
