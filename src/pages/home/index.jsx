@@ -2,6 +2,8 @@ import React, { useState, useEffect, useContext } from 'react';
 import styles from './index.css'
 import { Card, Col, Row, Icon, Button } from 'antd'
 import GlobalContext from '../../globalContext/globalContext';
+import HomeContext from './context'
+import HeadOptions from './components/headOptions'
 
 
 function TitleCard (props) {
@@ -45,7 +47,7 @@ function Home () {
       </Row>
       <div style={{marginTop: 20}}>
         <Card
-          style={{minHeight: 340}}
+          style={{minHeight: 340, margin:'20 0'}}
         >
           <div style={{display: 'flex', width: 420, flexWrap: 'wrap'}}>
             <div className={visible_left ? styles.div_show_left : styles.div_hide_left}></div>
@@ -61,6 +63,15 @@ function Home () {
           <Button type='primary' onClick={() => globalContext.changeList([4, 5, 6, 7])}>按钮</Button>
           <Button type='primary' ghost onClick={() => globalContext.changeText('love and pace')}>按钮</Button>
         </Card>
+        <HomeContext.Provider
+          value={{
+            visible_left,
+            changeVisibleLeft
+          }}
+          >
+          <HeadOptions />
+        </HomeContext.Provider>
+        
       </div>
     </div>
   )
