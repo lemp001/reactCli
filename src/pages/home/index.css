@@ -12,14 +12,46 @@
   border: 1px solid #ccc;
   transition: 1.5s;
   border-radius: 5px;
-  border-top-left-radius: 80px;
+  margin: 0 10px 10px 0;
 }
-.div_show {
+.div_show_left {
   composes: div_common;
+  border-top-left-radius: 80px;
   opacity: 1;
-  background: #f66;
+  background: #1890ff;
 }
-.div_hide {
+.div_hide_left {
+  composes: div_common;
+  opacity: 0;
+}
+
+.div_show_right {
+  composes: div_common;
+  border-top-right-radius: 80px;
+  opacity: 1;
+  background: #fa541c;
+}
+.div_hide_right {
+  composes: div_common;
+  opacity: 0;
+}
+.div_show_left_bottom {
+  composes: div_common;
+  border-bottom-left-radius: 80px;
+  opacity: 1;
+  background: #fadb14;
+}
+.div_hide_left_bottom {
+  composes: div_common;
+  opacity: 0;
+}
+.div_show_right_bottom {
+  composes: div_common;
+  border-bottom-right-radius: 80px;
+  opacity: 1;
+  background:#52c41a;
+}
+.div_hide_right_bottom {
   composes: div_common;
   opacity: 0;
 }

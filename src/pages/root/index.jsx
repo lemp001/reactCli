@@ -1,11 +1,22 @@
 import React from 'react';
+import { connect } from 'react-redux'
+// import * as action from '@src/Action'
 
-function Root () {
-  return (
-    <div>
-      456
-    </div>
-  )
+class Root extends React.Component {
+  
+  render () {
+    console.log('this.props', this.props)
+    
+    return (
+      <div>
+        Root
+      </div>
+    )
+  }
 }
 
-export default Root
+
+
+export default connect((state) => ({
+  ...state.root
+})) (Root)

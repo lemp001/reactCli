@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import styles from './index.css'
 import { Card, Col, Row, Icon, Button } from 'antd'
+import GlobalContext from '../../globalContext/globalContext';
 
 
 function TitleCard (props) {
@@ -20,11 +21,20 @@ function TitleCard (props) {
 
 
 function Home () {
-  const [visible, changeVisible] = useState(false)
-  const [obj, setObj] = useState({a: 1, b: 2, c: {d: 1, e: 2}})
+  const globalContext = useContext(GlobalContext)
+  const [visible_left, changeVisibleLeft] = useState(true)
+  const [visible_right, changeVisibleRight] = useState(true)
+  const [visible_left_bottom, changeVisibleLeftBottom] = useState(true)
+  const [visible_right_bottom, changeVisibleRightBottom] = useState(true)
+  const changeAll = () => {
+    changeVisibleLeft(!visible_left)
+    changeVisibleRight(!visible_right)
+    changeVisibleLeftBottom(!visible_left_bottom)
+    changeVisibleRightBottom(!visible_right_bottom)
+  }
   useEffect(() => {
-    changeVisible(true)
-  }, [obj])
+    console.log('hello world')
+  }, [visible_left])
   return (
     <div>
       <Row gutter={24}>
@@ -37,12 +47,19 @@ function Home () {
         <Card
           style={{minHeight: 340}}
         >
-          <div className={visible ? styles.div_show : styles.div_hide}>
-
+          <div style={{display: 'flex', width: 420, flexWrap: 'wrap'}}>
+            <div className={visible_left ? styles.div_show_left : styles.div_hide_left}></div>
+            <div className={visible_right ? styles.div_show_right : styles.div_hide_right}></div>
+            <div className={visible_left_bottom ? styles.div_show_left_bottom : styles.div_hide_left_bottom}></div>
+            <div className={visible_right_bottom ? styles.div_show_right_bottom : styles.div_hide_right_bottom}></div>
           </div>
-          
-          <Button onClick={() => changeVisible(!visible)}>按钮</Button>
-          <Button type='danger' onClick={() => setObj({...obj, c: {b:6, e:7}})}>按钮</Button>
+          <Button style={{background: '#1890ff'}} onClick={() => changeVisibleLeft(!visible_left)}>top left</Button>
+          <Button style={{background: '#fa541c'}} onClick={() => changeVisibleRight(!visible_right)}>top right</Button>
+          <Button style={{background: '#fadb14'}} onClick={() => changeVisibleLeftBottom(!visible_left_bottom)}>bottom left</Button>
+          <Button style={{background: '#52c41a'}} onClick={() => changeVisibleRightBottom(!visible_right_bottom)}>bottom right</Button>
+          <Button onClick={changeAll}>all div</Button>
+          <Button type='primary' onClick={() => globalContext.changeList([4, 5, 6, 7])}>按钮</Button>
+          <Button type='primary' ghost onClick={() => globalContext.changeText('love and pace')}>按钮</Button>
         </Card>
       </div>
     </div>

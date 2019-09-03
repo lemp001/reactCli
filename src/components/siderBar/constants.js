@@ -23,6 +23,11 @@ const menuConfig = [
     title: '详情',
     key: '/detail',
     icon: 'copy',
+  },
+  {
+    title: '权限',
+    key: '/root',
+    icon: 'menu-unfold',
   }
 ];
 
